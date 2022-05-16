@@ -1,0 +1,129 @@
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0
+}
+
+body {
+    font-family:Arial, Tahoma, Impact;
+    background-color:#eee;
+}
+
+  /* Start Main */
+main {
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:5;
+    background-color:#009688;
+    opacity:.9;
+    display:flex;
+    justify-content:center;
+    align-items:center
+}
+
+main span {
+    background-color:#E91E63;
+    opacity:1;
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+    padding:10px 20px;
+    border-radius: 10px;
+    text-transform:capitalize;
+    cursor:pointer
+}
+
+   /* start Header   */
+header {
+    padding:10px 20px;
+    width:80%;
+    margin:40px auto 20px;
+    background-color: rgb(157, 165, 110);
+    border:3px solid #009688;
+    display:flex
+}
+
+header > div {
+    width: 50%;
+    color:#fff;
+    font-size:20px
+}
+
+header .mistake {
+    text-align:right;
+}
+
+header > div span {
+    font-weight:bold;
+    color:#009688
+}
+
+   /* start Article    */
+
+article {
+    width:79%;
+    height:510px;
+    margin:auto;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    perspective:1000px;
+}
+
+article.on-click {pointer-events:none}
+
+article .main-block {
+    width:calc(100% / 6 - 7.5px);
+    height:calc(100% / 3 - 10px);
+    position: relative;
+    transform-style:preserve-3d;
+    background-color:#fff;
+    transition:transform 1s ease-in-out;
+}
+
+article .main-block.flip, article .main-block.flip-match {transform:rotateY(180deg);pointer-events:none}
+
+article .main-block  .front,
+article .main-block  .back {
+    position: absolute;
+    width: 100%;
+    height:100%;
+    backface-visibility:hidden;
+    cursor:pointer;
+    border:5px solid #009688;
+}
+
+article .main-block  .front {
+    background-color:#ccc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:100px;
+    font-weight:bold
+}
+
+article .main-block  .front::before {content:"?";}
+
+article .main-block  .back {
+    transform:rotateY(180deg);
+}
+
+article .main-block  .back img {
+    width: 100%;
+    height:100%
+}
+
+ /* Media Query => phons  */
+ @media (max-width:700px) {
+     header {margin-top:20px}
+     article {height:480px}
+     article .main-block {
+        width:calc(100% / 3 - 7.5px);
+        height:calc(100% / 6 - 10px);
+     }
+     article .main-block  .front {font-size:60px}
+ }
